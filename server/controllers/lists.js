@@ -14,10 +14,10 @@ export const createList = async  (req, res) => {
     const list = req.body;
     const newList = new List(list);
     try{
-        await List.save();
+        await newList.save(function(){});
         res.status(201).json(newList);
     } catch(error){
-        res.status(409).json({ message : error });
+        res.status(409).json({ message : error.message });
     }
 }
 
