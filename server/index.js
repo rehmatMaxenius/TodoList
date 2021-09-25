@@ -15,11 +15,13 @@ app.use(cors());
 
 app.use('/lists', listRoutes);
 app.use('/todos', todoRoutes);
-app.get('/', (req, res) => {
-    res.send('Welcome to todo list app');
-});
 
 const PORT = process.env.PORT || 5000;
+
+//heroku
+if(process.env.NODE_ENV = "production"){
+    app.use(express.static("client/build"));
+}
 
 mongoose.connect(process.env.CONNECTION_URL, { useNewUrlParser: true, useUnifiedTopology: true  })
 .then(() => {
