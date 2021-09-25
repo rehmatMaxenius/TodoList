@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import listRoutes from './routes/listRoutes.js';
+import todoRoutes from './routes/todoRoutes.js';
 import dotenv from 'dotenv';
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(bodyParser.urlencoded({ limit: "30mb", extended: true}));
 app.use(cors());
 
 app.use('/lists', listRoutes);
+app.use('/todos', todoRoutes);
 app.get('/', (req, res) => {
     res.send('Welcome to todo list app');
 });

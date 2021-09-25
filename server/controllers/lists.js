@@ -14,7 +14,7 @@ export const createList = async  (req, res) => {
     const list = req.body;
     const newList = new List(list);
     try{
-        await newList.save(function(){});
+        await newList.save();
         res.status(201).json(newList);
     } catch(error){
         res.status(409).json({ message : error.message });
